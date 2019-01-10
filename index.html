@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/minireset.css/master/minireset.css">
+    <link rel="stylesheet" href="css/debug.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .container{
+            display: flex;
+    flex-flow: row;
+    height: 100vh;
+        }
+
+        .right{
+            width: 70%;
+    display: block;
+    height: 100%;
+    text-align: center;
+        }
+
+        .left{
+            width: 30%;
+    display: block;
+    height: 600px;
+    text-align: center;
+    overflow: scroll;
+    overflow-x: hidden;
+        }
+        .meme-box {
+            border: 1px solid gray;
+        }
+        .meme-box img{
+            height: 100px;
+            width:100px;
+        }
+
+        .input-box{
+            width: 400px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 10px;
+        }
+
+        .load-button{
+            width: 100px;
+    height: 40px;
+    background: none;
+    border: 1px solid #00BCD4;
+    border-radius: 5px;
+    background: #00BCD4;
+    font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="left">
+            <meme-component v-on:memeclicked="memeRecieved" v-for="meme in memes" :meme="meme" :key="meme.id" />
+        </div>
+        <div class="right">
+            <canvas id="canvas" width="400" height="400"></canvas>
+            <br>
+            <br>
+            <input class="input-box" v-model="toptext" placeholder="Top text" type="text">
+            <br>
+            <br>
+            <input class="input-box" v-model="bottomtext" placeholder="bottom text" type="text">
+            <br>
+            <br>
+            <button class="load-button" v-on:click="loadCanvas">CREATE</button>
+            <br>
+            <br>
+            <p>Dowload: Right click on image and select 'Save image as'</p>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
